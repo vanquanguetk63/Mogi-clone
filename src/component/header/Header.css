@@ -1,0 +1,15 @@
+.mogi-logo {
+    height: 30px;
+    width: 100px;
+}
+
+.header-container {
+    width: 100%;
+    right: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nav-link {
+    color: inherit;
+}
+
