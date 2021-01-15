@@ -5,11 +5,12 @@ import home from "../../img/home.jpg";
 import Search from "../../component/search/Search";
 import Select from "../../component/select/Select";
 import List from "../../component/list/List";
+import Footer from "../../component/footer/Footer";
 
 class Home extends Component {
   render() {
     return (
-      <div >
+      <div>
         <div>
           <Header />
         </div>
@@ -30,7 +31,7 @@ class Home extends Component {
                     <a>Giá thuê đất</a>
                   </li>
                 </ul>
-                <div>
+                <div className="search-home">
                   <Search  name="btn btn-primary"/>
                 </div>
                 <ul className="nav justify-content-center mt-2">
@@ -54,6 +55,9 @@ class Home extends Component {
           <List/>   
         </div>
         
+        <div>
+          <Footer/>
+        </div>
       </div>
     );
   }

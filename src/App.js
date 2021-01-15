@@ -8,11 +8,11 @@ function App() {
       <Switch>
       
         <Route path="/buy-house">
-          <Buy/>
+          <Home/>
         </Route>
 
         <Route path="/">
-          <Home/>
+          <Buy/>
         </Route>
       </Switch>
     </div>

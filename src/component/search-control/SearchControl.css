@@ -1,4 +1,14 @@
 .search-control {
-    height: 80px;
-    background-color: #000;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.search-to-buy {
+   
+}
+
+.all-select {
+    width: 180px;
+    height: 38px;
 }

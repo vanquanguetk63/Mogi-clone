@@ -43,3 +43,7 @@
     flex-direction: column;
     text-align: center;
 }
+
+.search-home {
+    width: 400px;
+}
