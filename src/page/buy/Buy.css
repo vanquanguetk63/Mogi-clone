@@ -13,3 +13,11 @@
     font-size: 15px;
     border: 1px solid #c9ccd1;
 }
+
+.content-buy {
+    align-items: initial;
+}
+
+.content-buy .img-buy {
+    width: 100%;
+}

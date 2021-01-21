@@ -1,0 +1,113 @@
+.login-form {
+    width: 100%;
+    height: 500px;
+    padding-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.panel {
+    width: 500px;
+    height: 300px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);   
+    border-radius: 10px;
+}
+
+.panel .panel-header {
+    display: flex;
+    height: 40px;
+    border-bottom: solid 1px #eaeaea;
+}
+
+.panel .panel-header .login,
+.panel .panel-header .signup {
+    height: inherit;
+    width: 120px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    border-right: solid 1px #eaeaea;
+
+}
+
+.panel .panel-header .login {
+}
+
+.panel .panel-header .signup {
+    border-left: solid 1px #eaeaea;
+}
+
+.panel .panel-header .signup:active {}
+
+.panel .panel-header .select {
+    border-top: 3px solid #104b8c;
+    border-bottom: #ffffff 1px solid;
+}
+
+.panel .panel-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    left: 125px;
+}
+
+.input-icons i {
+    position: absolute;
+}
+
+.input-icons { 
+    width: 100%; 
+    
+} 
+
+.icon { 
+    padding: 10px;
+    font-size: 20px; 
+    color: green; 
+    min-width: 50px; 
+    text-align: center; 
+} 
+
+
+.panel .panel-body .textfield {
+    padding: 20px;
+    height: 40px;
+    width: 250px;
+    border: solid 1px #eaeaea;
+    padding-left: 50px;
+    outline: none;
+}
+
+.panel .panel-body .textfield:focus {
+    outline: none;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);   
+
+}
+
+.panel .panel-body .btn-custom {
+    border: none;
+    height: 40px;
+    width: 130.75px;
+    padding: 5px 20px;
+    border-radius: 3px;
+}
+
+.panel .panel-body .btn-custom:hover {
+    opacity: 0.8;
+}
+
+.panel .panel-body .btn-custom:focus {
+    outline: none;
+}
+
+.panel .panel-body .btn-login {
+    background-color: #00deb6;
+}
+
+.panel .panel-body .btn-signup {
+    background-color: #b8a5a8;
+}

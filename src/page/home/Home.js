@@ -8,12 +8,14 @@ import List from "../../component/list/List";
 import Footer from "../../component/footer/Footer";
 
 class Home extends Component {
+
+
   render() {
     return (
       <div>
-        <div>
-          <Header />
-        </div>
+        {/* <div>
+          <Header currentUser={this.state.currentUser}/>
+        </div> */}
         <div className="search-container">
           <img className="home-img" src={home}></img>
           <div className="home">
@@ -51,13 +53,11 @@ class Home extends Component {
         </div>
 
         <div className="container">
-          <List/> 
-          <List/>   
+           <List/> 
         </div>
         
-        <div>
-          <Footer/>
-        </div>
+        <br/>
+        <Footer/>
       </div>
     );
   }

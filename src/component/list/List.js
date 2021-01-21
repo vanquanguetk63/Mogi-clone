@@ -3,6 +3,7 @@ import Card from '../card/Card';
 import '../list/List.css';
 
 function List(props) {
+
     return (
         <div className="list">
             <h2>Title</h2>
@@ -13,7 +14,6 @@ function List(props) {
                 <Card/>
                 <Card/>
                 <a className="see-all"><i className="fa fa-chevron-right "></i></a>
-                
             </div>
         </div>
     );

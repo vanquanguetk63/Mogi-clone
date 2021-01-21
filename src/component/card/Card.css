@@ -1,7 +1,7 @@
 .card-custom {
     display: inline-block;
     width: 200px;
-    height: 255px;
+    height: 260px;
     border: solid 1px #c9ccd1;
     border-radius: 5px;
     cursor: pointer;
@@ -21,9 +21,10 @@
 }
 
 .card-custom .post-title {
-    width: 100%;
-    font-size: 15px;
-    font-weight: bold;
+    width: 95%;
+    color: #262637;
+    font-size: 14px;
+    font-weight: 524;
     word-wrap: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -33,13 +34,16 @@
 }
 
 .card-custom .post-address {
-    font-size: 15px;
-    
+    font-size: 13px;
 }
 
 .card-custom .post-price {
     font-size: 20px;
     color: #337ab7;
     font-weight: bold;
+}
+
+.card-custom .post-price p i {
+    color: initial; 
 }
 

@@ -13,3 +13,31 @@
     color: inherit;
 }
 
+.btn-custom {
+    border: none;
+}
+
+.btn-custom:focus {
+    outline: none;
+}
+
+.btn-profile {
+    border-radius: 20px;
+}
+
+.btn-profile:focus {
+    background-color: rgba(50, 170, 94, 0.5);
+}
+
+.btn-post {
+    background-color: #00deb6;;
+    width: 100px;
+}
+
+.btn-post:hover {
+    background-color: rgb(199, 214 ,211);
+}
+
+.btn-login:hover {
+    background-color: rgb(199, 214 ,211);
+}

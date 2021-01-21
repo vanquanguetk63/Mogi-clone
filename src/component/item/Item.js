@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../item/Item.css';
 
 function Item(props) {
+    const [favorite, isFavorite] = useState(false);
+
+    const handleClick = () => {
+        isFavorite(!favorite);
+    }
+
     return (
         <div className="item-custom mb-3">
-            <div className="row">
-                <div className="col-4 img-item">
+            <div className="row row-item">
+                <div className="col-4 col-md-4 img-item ">
                     <img className="img" src="https://cloud.mogi.vn/images/2021/01/14/320/a377cfafecf744eb879e70d9c4ea0c1d.jpg">
                     </img>
                     <div className="num">
@@ -13,9 +20,11 @@ function Item(props) {
                     </div>
                 </div>
 
-                <div className="col-8 content-item mt-1">
+                <div className="col-7 col-md-7  content-item mt-2">
                     <div className="title">
-                        <p>Khai trương căn hộ mới 100% Lý Thường Kiệt - Quận 10 Gác cao 1M7</p>
+                        <Link to="/house">
+                            <p>Khai trương căn hộ mới 100% Lý Thường Kiệt - Quận 10 Gác cao 1M7</p>
+                        </Link>
                     </div>
 
                     <div className="address">
@@ -23,7 +32,7 @@ function Item(props) {
                     </div>
 
                     <div className="infor">
-                        <p><b>40m2 </b> s1PN 1WC</p>
+                        <p><b>40m2 </b> 1PN 1WC</p>
                     </div>
 
                     <div className="price">
@@ -34,6 +43,16 @@ function Item(props) {
                         <p>Hôm nay</p>
                     </div>
 
+                </div>
+
+                <div className="col-1 icon-item col-md-1">
+                    <div className="up-item">
+                        <i class="fa fa-star custom-star" aria-hidden="true"></i>
+                    </div>
+
+                    <div className="favorite" onClick={() => handleClick()}>
+                        <i className={favorite ? "fas fa-heart custom-heart" : "far fa-heart"}  ></i>
+                    </div>
                 </div>
             </div>
         </div>
