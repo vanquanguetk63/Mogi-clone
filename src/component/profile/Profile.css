@@ -1,0 +1,22 @@
+.profile {
+    width: 100%;
+    height: auto;
+    align-items: initial;
+}
+
+.profile .profile-avatar {
+    width: 80px;
+    height: 60px;
+    float: left;
+}
+
+.profile .profile-avatar .img-avatar {
+    width: 60px;
+    height: inherit;
+    border-radius: 50%;
+}
+
+.profile .profile-infor {
+    font-size: 14px;
+    line-height: 1.5;
+}

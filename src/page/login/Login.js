@@ -1,9 +1,18 @@
-import React, { useState } from "react";
-import Header from "../../component/header/Header";
-import Footer from "../../component/footer/Footer";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../login/Login.css";
 
 function Login(props) {
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [msgValidation, setMsgValidation] = useState('');
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(phone + password);
+  }
+
+ 
 
   return (
     <div>
@@ -18,27 +27,39 @@ function Login(props) {
 
           <div className="panel-body">
               <br/>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="input-icons mb-2">
                     <i className="fas fa-phone-square icon"></i>
-                    <input className="textfield " type="text" placeholder="Số điện thoại"></input>
+                    <input className="textfield" 
+                    name="phone" value={phone} 
+                    type="text" placeholder="Số điện thoại"
+                    onChange={(e) => setPhone(e.target.value)}
+                    >
+                    </input>
                 </div>
         
                 <div className="input-icons">
-                    <i class="fas fa-lock icon "></i>
-                    <input className="textfield" type="text" placeholder="Mật khẩu"></input>
+                    <i className="fas fa-lock icon "></i>
+                    <input className="textfield" 
+                    name="password" value={password}
+                    type="text" placeholder="Mật khẩu"
+                    onChange={(e) => setPassword(e.target.value)}
+                    >
+                    </input>
                 </div>
      
-                <button className="btn-custom btn-login mt-3"> Đăng nhập <i class="fas fa-angle-right"></i></button>
+                <button className="btn-custom btn-login mt-3"> Đăng nhập <i className="fas fa-angle-right"></i></button>
               </form>
 
-              <div>
-                <button className="btn-custom btn-signup mt-3">Đăng ký <i class="fas fa-angle-right ml-3"></i></button>     
-              </div>             
+              <Link to="/signup">
+                <div>
+                  <button className="btn-custom btn-signup mt-3">Đăng ký <i className="fas fa-angle-right ml-3"></i></button>     
+                </div>    
+              </Link>         
           </div>
         </div>
       </div>
-      <Footer />
+      
     </div>
   );
 }

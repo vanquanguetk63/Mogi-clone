@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../item/Item.css';
 
+
 function Item(props) {
     const [favorite, isFavorite] = useState(false);
 
@@ -12,7 +13,7 @@ function Item(props) {
     return (
         <div className="item-custom mb-3">
             <div className="row row-item">
-                <div className="col-4 col-md-4 img-item ">
+                <div className="col-5 col-md-4 img-item ">
                     <img className="img" src="https://cloud.mogi.vn/images/2021/01/14/320/a377cfafecf744eb879e70d9c4ea0c1d.jpg">
                     </img>
                     <div className="num">
@@ -20,7 +21,7 @@ function Item(props) {
                     </div>
                 </div>
 
-                <div className="col-7 col-md-7  content-item mt-2">
+                <div className="col-6 col-md-7 content-item mt-3">  
                     <div className="title">
                         <Link to="/house">
                             <p>Khai trương căn hộ mới 100% Lý Thường Kiệt - Quận 10 Gác cao 1M7</p>
@@ -32,7 +33,7 @@ function Item(props) {
                     </div>
 
                     <div className="infor">
-                        <p><b>40m2 </b> 1PN 1WC</p>
+                        <p><b>40m<sup>2</sup> </b> 1PN 1WC</p>
                     </div>
 
                     <div className="price">

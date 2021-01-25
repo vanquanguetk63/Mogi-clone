@@ -1,36 +1,29 @@
 import React, { Component } from "react";
-import Header from "../../component/header/Header";
 import "../home/Home.css";
 import home from "../../img/home.jpg";
 import Search from "../../component/search/Search";
 import Select from "../../component/select/Select";
 import List from "../../component/list/List";
-import Footer from "../../component/footer/Footer";
 
 class Home extends Component {
-
-
   render() {
     return (
       <div>
-        {/* <div>
-          <Header currentUser={this.state.currentUser}/>
-        </div> */}
         <div className="search-container">
-          <img className="home-img" src={home}></img>
+          <img className="home-img" src={home} alt=""></img>
           <div className="home">
             <div className="home-content">
               <p>Đúng nhà, đúng thời điểm</p>
               <div className="search-menu">
                 <ul className="nav justify-content-center mt-2 mb-3">
                   <li className="nav-item mr-5">
-                    <a>Mua</a>
+                    <a style={{cursor:'pointer'}} href="#">Mua</a>
                   </li>
                   <li className="nav-item mr-5">
-                    <a>Thuê</a>
+                    <a style={{cursor:'pointer'}} href="#">Thuê</a>
                   </li>
                   <li className="nav-item mr-5">
-                    <a>Giá thuê đất</a>
+                    <a href="#">Giá thuê đất</a>
                   </li>
                 </ul>
                 <div className="search-home">
@@ -54,10 +47,11 @@ class Home extends Component {
 
         <div className="container">
            <List/> 
+           <br/>
+           <List/> 
         </div>
         
         <br/>
-        <Footer/>
       </div>
     );
   }

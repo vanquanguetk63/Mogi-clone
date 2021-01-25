@@ -1,10 +1,7 @@
-import { blue, yellow } from "@material-ui/core/colors";
 import React, { Component } from "react";
-import Header from "../../component/header/Header";
 import Item from "../../component/item/Item";
 import SearchControl from "../../component/search-control/SearchControl";
 import "../buy/Buy.css";
-import Footer from "../../component/footer/Footer";
 import ads from "../../img/right.jpg";
 import Filter from "../../component/filter/Filter";
 
@@ -12,8 +9,8 @@ class Buy extends Component {
   render() {
     return (
       <>
-        <div className="container">
-          <div className="control-search mt-2">
+        <div className="container py-3">
+          <div className="control-search">
             <SearchControl />
           </div>
 
@@ -39,11 +36,10 @@ class Buy extends Component {
               </div>
             </div>
 
-            <div className="col-0 col-md-4">
+            <div className="col-0 col-md-4 right">
                 <div>
-                    <img className="img-buy" src={ads}></img>
+                    <img className="img-buy" src={ads} alt=""></img>
                 </div>
-                
                 <Filter/>
 
 
@@ -51,9 +47,7 @@ class Buy extends Component {
           </div>
         </div>
 
-        <div className="mt-5">
-          <Footer />
-        </div>
+  
       </>
     );
   }

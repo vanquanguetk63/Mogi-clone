@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "../slideshow/SlideShow.css";
 
 export default class SlideShow extends React.Component {
@@ -49,7 +48,7 @@ export default class SlideShow extends React.Component {
               <div className="number-text">
                 {`${index + 1} / ${this.props.input.length}`}
               </div>
-              <img className="image" src={image.src} />
+              <img className="image" src={image.src}  alt=""/>
             </div>
           );
         })}

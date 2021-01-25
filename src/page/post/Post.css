@@ -1,0 +1,87 @@
+.post {
+}
+
+.post label {
+    font-weight: bold;
+}
+
+.post .post-row {
+    align-items: initial;
+}
+
+.post .left {
+    border-right: solid 1px #cecece;
+    background-color: #e6e6e6;
+}
+
+.post .left .nav-custom{
+    display: flex;
+    flex-direction: column;
+}
+
+.post .left .nav-custom>a {
+    text-align: left;
+    padding: 8px;
+    width: 100%;
+    height: 40px;
+    color: inherit;
+}
+
+.post .left .nav-custom .active {
+    background-color: #cecece;
+    font-weight: bold;
+}
+
+.post .left .nav-custom>a:hover {
+    background-color: #cecece;;
+}
+
+.post .right .post-form{   
+    width: 50%;
+    
+}
+
+.post .right .post-title {
+    border-bottom: solid 1px #cecece;
+}
+
+.post .right .post-address .form-control {
+    width: 80%;
+}
+
+.post .right .post-address .form-group .select-custom {
+    width: 200px;
+    margin-right: 10px;
+}
+
+.post .right .post-address .row-1 {
+    display: flex;
+
+}
+
+.post .right .post-address .input-group .form-control {
+    width: 90%;
+    height: 100px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.post .right .upload-file .custom-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 96.5%;
+    border: dashed 2px #cecece;
+    line-height: 5;
+    position: absolute;
+}
+
+.post .right .upload-file .custom-upload-file {
+    height: 200px;
+    width: 96.5%;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+}

@@ -8,19 +8,19 @@ class Header extends Component {
     return (
       <div className="header-container">
         <nav className="navbar navbar-expand-sm">
-          <a className="navbar-brand" href="#">
-            <img className="mogi-logo" src={logo}></img>
+          <a className="navbar-brand" href="/">
+            <img className="mogi-logo" src={logo} alt=""></img>
           </a>
           <div style={{ flexGrow: 1 }}></div>
           <ul className="navbar-nav mr-3">
             <li className="nav-item">
-              <a className="nav-link" href="/buy-house">
+              <a className="nav-link" href="/buy">
                 {" "}
                 Mua nhà
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/rent">
                 Thuê nhà
               </a>
             </li>
@@ -38,7 +38,9 @@ class Header extends Component {
               <button className="btn-custom btn-profile mr-3">
                 <i class="fas fa-user-circle"></i> Tran{" "}
               </button>
+              <Link to="/profile/post">
               <button className="btn-custom btn-post">Đăng tin</button>
+              </Link>
             </>
           ) : (
             <Link to={'/Login'}> 

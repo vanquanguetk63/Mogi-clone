@@ -5,7 +5,7 @@ function Card(props) {
     return (
         <div className="card-custom mr-3">
             <div className="card-img">
-                <img src="https://cloud.mogi.vn/project/201710/23/428/f2ee634e7f1d493a83ccdb38094cafe1.jpg"/>
+                <img src="https://cloud.mogi.vn/project/201710/23/428/f2ee634e7f1d493a83ccdb38094cafe1.jpg" alt=""/>
             </div>
     
             <div className="post-title ml-2 mt-2 mb-2">

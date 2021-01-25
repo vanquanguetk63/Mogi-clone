@@ -22,26 +22,7 @@
     left: 150px;
 }
 
-.house .profile {
-    border-bottom: solid 1px #cc99cc;
-}
 
-.house .profile .profile-img {
-    border-radius: 50%;
-    position: absolute;
-}
-
-.house .profile .profile-name {
-    position: relative;
-    left: 60px;
-    font-size: 15px;
-    line-height: 10px;
-
-}
-
-.house .profile .profile-name p {
-    line-height: 10px;
-}
 
 .house .contact {
     width: 100%;
@@ -54,17 +35,14 @@
     border-radius: 10px;
 }
 
-.house .contact .profile-img {
-    border-radius: 50%;
-    float: left;
-    margin-right: 5px;
-}
+
 
 .house .contact .contact-user {
-    width: 250px;
+    width: 70%;
 }
 
 .house .contact .profile-name {
+    left: 200px;
     font-size: 20px;
     line-height: 10px;
 }
