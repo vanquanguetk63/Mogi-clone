@@ -109,3 +109,8 @@
 .panel .panel-body .btn-signup {
     background-color: #b8a5a8;
 }
+
+.panel .panel-body .err {
+    color: red;
+    font-size: 12px;
+}

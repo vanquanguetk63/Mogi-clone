@@ -14,8 +14,13 @@ function Post(props) {
             
             <div className="nav-custom">
               <a className="active" href="#">
+                <i class="fas fa-pen-square mr-2"></i>
+                Đăng tin
+              </a>
+
+              <a href="#">
                 <i class="fas fa-tasks mr-2"></i>
-                Quản lý tin Đăng
+                Quản lý tin đăng
               </a>
 
               <a href="#">

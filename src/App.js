@@ -11,7 +11,7 @@ import Rent from "./page/rent/Rent";
 import Post from "./page/post/Post";
 
 function App(props) {
-  const [currentUser, setCurrentUser] = useState("s");
+  const [currentUser, setCurrentUser] = useState("");
 
   return (
     <Route>
