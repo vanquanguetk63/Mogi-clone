@@ -89,7 +89,6 @@ function Signup(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     validateForm();
-  
   };
 
   const validateForm = () => {

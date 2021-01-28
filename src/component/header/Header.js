@@ -4,7 +4,13 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    let isLogin = this.props.data.isLogin;
+
     return (
       <div className="header-container">
         <nav className="navbar navbar-expand-sm">
@@ -33,10 +39,10 @@ class Header extends Component {
 
           <div style={{ flexGrow: 0 }}></div>
 
-          {this.props.currentUser !== "" ? (
+          {isLogin === true ? (
             <>
               <button className="btn-custom btn-profile mr-3">
-                <i class="fas fa-user-circle"></i> Tran{" "}
+                <i class="fas fa-user-circle"></i> {this.props.data.currentUser[0].nameUser}
               </button>
               <Link to="/profile/post">
               <button className="btn-custom btn-post">Đăng tin</button>

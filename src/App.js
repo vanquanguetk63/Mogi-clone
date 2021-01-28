@@ -1,56 +1,84 @@
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Home from "./page/home/Home";
 import Buy from "./page/buy/Buy";
 import House from "./page/house/House";
 import Login from "./page/login/Login";
 import Header from "./component/header/Header";
 import Footer from "./component/footer/Footer";
-import { useState } from "react";
 import Signup from "./page/signup/Signup";
 import Rent from "./page/rent/Rent";
 import Post from "./page/post/Post";
+import { React, Component, createContext } from "react";
 
-function App(props) {
-  const [currentUser, setCurrentUser] = useState("");
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <Route>
-      <Switch>
-        <Route exact path="/admin"></Route>
+    this.state = {
+      currentUser: "",
+      isLogin: false,
+    };
+  }
 
-        <Route>
-          <Header currentUser={currentUser} />
-          <Switch>
-            <Route exact path="/profile/post" exact component={Post}></Route>
+  componentDidMount = () => {
+    let user = JSON.parse(localStorage.getItem("user"));
+    if (user !== null) {
+      this.setState({
+        currentUser: user.currentUser,
+        isLogin: user.isLogin,
+      });
+    }
+  };
 
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
+  setUser = (data) => {
+    this.setState({
+      currentUser: data,
+      isLogin: true,
+    });
+    localStorage.setItem("user", JSON.stringify(this.state));
+  };
 
-            <Route exact path="/login">
-              <Login />
-            </Route>
+  render() {
+    return (
+      <Route>
+        <Switch>
+          <Route exact path="/admin"></Route>
+          <Route>
+            <Header data={this.state} />
+            <Switch>
+              <Route exact path="/profile/post" exact>
+                <Post data={this.state}/>
+              </Route>
 
-            <Route exact path="/house">
-              <House />
-            </Route>
+              <Route exact path="/signup">
+                <Signup />
+              </Route>
 
-            <Route exact path="/rent">
-              <Rent />
-            </Route>
+              <Route exact path="/login">
+                <Login data={this.state} islogin={this.setUser} />
+              </Route>
 
-            <Route exact path="/buy">
-              <Buy />
-            </Route>
+              <Route exact path="/house">
+                <House />
+              </Route>
 
-            <Route exact path="/" component={Home}></Route>
-          </Switch>
+              <Route exact path="/rent">
+                <Rent />
+              </Route>
 
-          <Footer />
-        </Route>
-      </Switch>
-    </Route>
-  );
+              <Route exact path="/buy">
+                <Buy />
+              </Route>
+
+              <Route exact path="/" component={Home}></Route>
+            </Switch>
+
+            <Footer />
+          </Route>
+        </Switch>
+      </Route>
+    );
+  }
 }
 
 export default App;
