@@ -4,9 +4,9 @@ import '../profile/Profile.css';
 
 function Profile(props) {
     const validateDay = () => {
-        let day = props.data.currentUser[0].CreateAt.slice(0,10);
-        day = reverseString(day);
-        return day;
+        // let day = props.data.currentUser[0].CreateAt.slice(0,10);
+        // day = reverseString(day);
+        // return day;
     }
 
     function reverseString(str) {
@@ -29,7 +29,7 @@ function Profile(props) {
             </div>
 
             <div className="profile-infor">
-                {props.data.currentUser[0].nameUser}
+                {/* {props.data.currentUser[0].idUser} */}
                 <br/>
                 Đã tham gia: 
                 <br/>

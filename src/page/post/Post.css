@@ -66,6 +66,8 @@
     word-break: break-all;
 }
 
+
+
 .post .right .upload-file .custom-content {
     display: flex;
     flex-direction: column;
@@ -84,4 +86,21 @@
     position: relative;
     z-index: 2;
     opacity: 0;
+}
+
+.post .err {
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.post .img-show .detail{
+    width: 115px;
+    height: 120px
+}
+
+.post .img-show .delete {
+    width: 115px;
+    background-color:#fff;
+    border: 1px solid #000;
 }

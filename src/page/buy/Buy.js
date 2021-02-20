@@ -6,16 +6,17 @@ import ads from "../../img/right.jpg";
 import Filter from "../../component/filter/Filter";
 
 class Buy extends Component {
+
+  componentDidMount() {
+    // call api
+  }
+
   render() {
     return (
       <>
         <div className="container py-3">
           <div className="control-search">
             <SearchControl />
-          </div>
-
-          <div>
-            <p>Link</p>
           </div>
 
           <div className="row content-buy">
