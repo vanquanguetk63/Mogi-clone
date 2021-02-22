@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchControl from '../../component/search-control/SearchControl';
 import Item from '../../component/item/Item';
 import ads from "../../img/right.jpg";
 import '../rent/Rent.css';
 import Filter from '../../component/filter/Filter';
+import rent from '../../api/rent';
 
 
 function Rent(props) {
+    const [listItem, setListItem] = useState();
+
+    useEffect(() => {
+        rent.GetToRent()
+        .then(response => {
+            console.log(response);
+            setListItem(response);
+        }) 
+        .catch(console.error());
+    }, []);
+
+   
+
     return (
         <div className="container rent py-3">
             <SearchControl/>
-            <p>Link</p>
             <div className="row set-align">
                 <div className="col-12 col-md-8">
                     <b>
@@ -22,10 +35,11 @@ function Rent(props) {
                     <div className="result mb-3">
                         <div className="ml-2">1 - 15 trong 100.000 kết quả</div>
                     </div>
+                    {listItem !== undefined ?
+                    listItem.map((obj) => <Item key={obj.idPost} data={obj}/>)
 
-                    <Item/>
-                    <Item/>
-                    <Item/>
+                    : ""}
+               
                 </div>
 
                 <div className="col-0 col-md-4">

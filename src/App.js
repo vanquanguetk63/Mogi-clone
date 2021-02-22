@@ -47,7 +47,7 @@ class App extends Component {
             <Header data={this.state} />
             <Switch>
               <Route exact path="/profile/post" exact>
-                <Post data={this.state}/>
+                <Post data={this.state} />
               </Route>
 
               <Route exact path="/signup">
@@ -58,8 +58,14 @@ class App extends Component {
                 <Login data={this.state} islogin={this.setUser} />
               </Route>
 
-              <Route exact path="/house">
-                <House />
+              <Route
+                exact
+                path="/house/:id"
+                render={({ match }) => (
+                  <House  match={match} />
+                )}
+              >
+             
               </Route>
 
               <Route exact path="/rent">

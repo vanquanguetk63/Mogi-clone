@@ -35,6 +35,7 @@ function Post(props) {
   const [bedroom, setBedroom] = useState();
   const [toilet, setToilet] = useState();
 
+
   const history = useHistory();
 
   var msg = {
@@ -51,6 +52,8 @@ function Post(props) {
   };
 
   useEffect(() => {
+    console.log(props.data);
+
     if (id === undefined) {
       post
         .GetNewId()
@@ -362,7 +365,7 @@ function Post(props) {
         <div className="row post-row">
           <div className="col-md-2 left">
             <div className="mt-3">
-              <Profile data={props.data} />
+              <Profile  />
             </div>
             <br />
 

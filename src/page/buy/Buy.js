@@ -4,14 +4,38 @@ import SearchControl from "../../component/search-control/SearchControl";
 import "../buy/Buy.css";
 import ads from "../../img/right.jpg";
 import Filter from "../../component/filter/Filter";
+import buy from "../../api/buy";
 
 class Buy extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      listItem: []
+    }
+  }
 
   componentDidMount() {
     // call api
+    buy.GetToBuy()
+    .then(response => {
+      this.setState({
+        listItem: response
+      })
+    })
+    .catch(console.error());
   }
 
+  
+
   render() {
+    var elmItem = {};
+    if (this.state.listItem !== undefined) {
+      elmItem = this.state.listItem.map((obj) => {
+        return (
+          <Item data={obj}/>
+        )
+      })
+    }
     return (
       <>
         <div className="container py-3">
@@ -32,8 +56,7 @@ class Buy extends Component {
               </div>
 
               <div className="mt-3">
-                <Item />
-                <Item />
+                {elmItem}
               </div>
             </div>
 
