@@ -312,7 +312,7 @@ function Signup(props) {
             <br />
             <form onSubmit={handleSubmit}>
               <div className="input-icons mb-2">
-                <i class="fas fa-user icon"></i>
+                <i className="fas fa-user icon"></i>
                 <input
                   className="textfield"
                   value={fullName}
@@ -340,7 +340,7 @@ function Signup(props) {
               </div>
 
               <div className="input-icons mb-2">
-                <i class="fas fa-at icon"></i>
+                <i className="fas fa-at icon"></i>
                 <input
                   className="textfield"
                   value={email}
@@ -354,7 +354,7 @@ function Signup(props) {
               </div>
 
               <div className="input-icons mb-2">
-                <i class="fas fa-lock icon "></i>
+                <i className="fas fa-lock icon "></i>
                 <input
                   className="textfield"
                   value={password}
@@ -368,7 +368,7 @@ function Signup(props) {
               </div>
 
               <div className="input-icons">
-                <i class="fas fa-lock icon "></i>
+                <i className="fas fa-lock icon "></i>
                 <input
                   className="textfield"
                   value={rePassword}
@@ -382,7 +382,7 @@ function Signup(props) {
               </div>
 
               <button className="btn-custom btn-signup mt-3">
-                Đăng ký <i class="fas fa-angle-right ml-3"></i>
+                Đăng ký <i className="fas fa-angle-right ml-3"></i>
               </button>
             </form>
           </div>

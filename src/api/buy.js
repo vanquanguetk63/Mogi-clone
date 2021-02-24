@@ -26,7 +26,21 @@ async function GetImageById(data) {
     return data;
 }
 
+async function GetToBuyLimit() {
+    let url = 'http://localhost:8080/api/buy/5';
+    let data;
+    await axios.get(url)
+    .then(response => {
+        data = response.data;
+    })
+    .catch(error => {
+        console.log(error);
+    })
+    return data;
+}
+
 export default {
     GetToBuy,
-    GetImageById
+    GetImageById,
+    GetToBuyLimit
 }

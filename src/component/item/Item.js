@@ -37,7 +37,7 @@ function Item(props) {
   };
 
   return (
-    <div className="item-custom mb-5">
+    <div className="item-custom mb-5 mt-5">
       <div className="row row-item">
         <div className="col-5 col-md-4 img-item">
           <img
@@ -51,11 +51,11 @@ function Item(props) {
         </div>
 
         <div className="col-6 col-md-7 content-item mt-3">
-          <div className="title">
+          <div className="title mb-1">
             <Link
               to={{
-                pathname: `/house/${id}`
-            }}
+                pathname: `/house/${id}`,
+              }}
             >
               <p>
                 <b>{props.data.title}</b>
@@ -63,31 +63,31 @@ function Item(props) {
             </Link>
           </div>
 
-          <div className="address">
+          <div className="address ">
             <p>{props.data.address}</p>
           </div>
 
           <div className="infor">
             <p>
               <b>
-                {props.data.square}m<sup>2</sup>
+                {props.data.square} m<sup>2</sup> &ensp;
               </b>{" "}
-              {props.data.bedroom} PN {props.data.toilet} WC
+              {props.data.bedroom} PN &ensp; {props.data.toilet} WC
             </p>
           </div>
 
           <div className="price">
-            <p>{price} VND</p>
+            <p>{price} VNĐ</p>
           </div>
 
-          <div className="date mt-2" style={{ fontSize: "12px" }}>
-            <p>Ngày đăng: {time !== undefined ? time : ""}</p>
+          <div className="date" style={{ fontSize: "12px" }}>
+            <p className="">Ngày đăng: {time !== undefined ? time : ""}</p>
           </div>
         </div>
 
         <div className="col-1 icon-item col-md-1">
           <div className="up-item">
-            <i class="fa fa-star custom-star" aria-hidden="true"></i>
+            <i className="fa fa-star custom-star" aria-hidden="true"></i>
           </div>
 
           <div className="favorite" onClick={() => handleClick()}>

@@ -18,11 +18,18 @@ function reverseString(str) {
   return rvsStr;
 }
 
+function getNumberInPost(number) {
+  number = number.split('.').join("");
+
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
 function getNumberWithCommas(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
 export default  {
     validateDay,
-    getNumberWithCommas
+    getNumberWithCommas,
+    getNumberInPost
 }

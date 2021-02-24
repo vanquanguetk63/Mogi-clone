@@ -48,7 +48,15 @@
     width: 400px;
 }
 
-.search-menu>ul li a, .search-menu>ul li a:hover {
+.search-menu>ul > li > a, .search-menu>ul > li > a:hover {
     text-decoration: none;
     color: #ffffff;
+}
+
+.search-menu>ul > li > a:hover {
+    opacity: 0.6;
+}
+
+.home .home-content .search-menu .custom-mark {
+    border-bottom: solid 2px #fff;
 }

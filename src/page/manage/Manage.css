@@ -1,0 +1,31 @@
+.manage .manage-row {
+    align-items: initial;
+}
+
+.manage .manage-row .left {
+    height: 1000px;
+    border-right: solid 1px #cecece;
+    background-color: #babcbf;
+}
+
+.manage .manage-row .left .nav-custom {
+    display: flex;
+    flex-direction: column;
+}
+
+.manage .left .nav-custom>a {
+    text-align: left;
+    padding: 8px;
+    width: 100%;
+    height: 40px;
+    color: inherit;
+}
+
+.manage .left .nav-custom .active {
+    background-color: #cecece;
+    font-weight: bold;
+}
+
+.manage .left .nav-custom>a:hover {
+    background-color: #cecece;;
+}

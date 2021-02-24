@@ -42,7 +42,7 @@ class Header extends Component {
           {isLogin === true ? (
             <>
               <button className="btn-custom btn-profile mr-3">
-                <i class="fas fa-user-circle"></i> {this.props.data.currentUser[0].nameUser}
+                <i className="fas fa-user-circle"></i> {this.props.data.currentUser[0].nameUser}
               </button>
               <Link to="/profile/post">
               <button className="btn-custom btn-post">Đăng tin</button>

@@ -5,6 +5,7 @@
     border: solid 1px #c9ccd1;
     border-radius: 5px;
     cursor: pointer;
+    line-height: normal;
 }
 
 .card-custom:hover {

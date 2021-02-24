@@ -11,7 +11,7 @@
 
 .post .left {
     border-right: solid 1px #cecece;
-    background-color: #e6e6e6;
+    background-color: #babcbf;
 }
 
 .post .left .nav-custom{
@@ -103,4 +103,14 @@
     width: 115px;
     background-color:#fff;
     border: 1px solid #000;
+}
+
+.post .textarea-custom {
+    display: flex;
+    align-items: center;
+}
+
+.post .textarea-custom > i {
+    position: absolute;
+    left:28%;
 }

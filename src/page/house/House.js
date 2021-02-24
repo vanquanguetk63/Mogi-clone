@@ -45,7 +45,7 @@ function House(props) {
                   <p>{data[0].title}</p>
                 </b>
                 <p>{data[0].address}</p>
-                <p>{data[0].price}</p>
+                <p style={{fontSize: '20px', color: '#337ab7', fontWeight: 'bold'}}>{validate.getNumberWithCommas(data[0].price)} VND</p>
               </div>
 
               <div className="content">
@@ -95,10 +95,10 @@ function House(props) {
                 </div>
                 <br></br>
                 <div className="mb-2">
-                  <button type="button" class="btn btn-outline-warning btn-sm">
+                  <button type="button" className="btn btn-outline-warning btn-sm">
                     Báo cáo vi phạm{" "}
                     <i
-                      class="fa fa-exclamation-triangle"
+                      className="fa fa-exclamation-triangle"
                       aria-hidden="true"
                     ></i>
                   </button>
@@ -119,11 +119,11 @@ function House(props) {
                 <div className="phone-message">
                   <div className="phone">
                     <button className="btn btn-outline-secondary  mr-2">
-                      <i class="fa fa-phone mr-1" aria-hidden="true"></i>
+                      <i className="fa fa-phone mr-1" aria-hidden="true"></i>
                       {data[0].phoneUser}
                     </button>
                     <button className="btn btn-outline-secondary ">
-                      <i class="far fa-envelope mr-1"></i>
+                      <i className="far fa-envelope mr-1"></i>
                       Gửi tin nhắn
                     </button>
                   </div>
@@ -131,7 +131,7 @@ function House(props) {
 
                 <div className="save-post mt-2">
                   <button className="btn btn-outline-secondary save">
-                    <i class="far fa-save mr-1"></i>
+                    <i className="far fa-save mr-1"></i>
                     Lưu tin
                   </button>
                 </div>

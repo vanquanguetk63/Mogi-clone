@@ -11,7 +11,7 @@ function Profile(props) {
             </div>
 
             <div className="profile-infor">
-                { props.data !== undefined ? props.data[0].nameUser : ""}
+                { props.data !== undefined ? props.data[0].nameUser : ''}
                 <br/>
                 Đã tham gia: { props.data !== undefined ? validate.validateDay(props.data[0].CreateAt) : "" }
             </div>

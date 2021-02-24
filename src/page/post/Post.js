@@ -7,6 +7,7 @@ import post from "../../api/post";
 import upload from "../../api/upload";
 import "../post/Post.css";
 import { useHistory } from "react-router-dom";
+import validate from "../../lib/validate";
 
 function Post(props) {
   const [id, setId] = useState();
@@ -35,7 +36,6 @@ function Post(props) {
   const [bedroom, setBedroom] = useState();
   const [toilet, setToilet] = useState();
 
-
   const history = useHistory();
 
   var msg = {
@@ -48,11 +48,11 @@ function Post(props) {
     errSquare: "",
     errBedroom: "",
     errToilet: "",
-    errImg: ""
+    errImg: "",
   };
 
   useEffect(() => {
-    console.log(props.data);
+    
 
     if (id === undefined) {
       post
@@ -233,7 +233,7 @@ function Post(props) {
     data.title = title;
     data.description = des;
     data.address = myAddress;
-    data.price = price;
+    data.price = price.split('.').join("");
     data.square = square;
     data.idUser = props.data.currentUser[0].idUser;
     data.idProvince = myProvince;
@@ -353,7 +353,7 @@ function Post(props) {
       // console.log(img);
       elmImg = img.map((obj) => {
         return (
-          <div className="col-md-2" key={obj.id}>
+          <div className="col-md-2 mb-2" key={obj.id}>
             <img className="detail" src={obj.url} />
           </div>
         );
@@ -365,28 +365,28 @@ function Post(props) {
         <div className="row post-row">
           <div className="col-md-2 left">
             <div className="mt-3">
-              <Profile  />
+              <Profile data={props.data.currentUser}/>
             </div>
             <br />
 
-            <div className="nav-custom">
-              <a className="active" href="#">
-                <i class="fas fa-pen-square mr-2"></i>
+            <div className="nav-custom mt-4">
+              <a className="active" href="/profile/post">
+                <i className="fas fa-pen-square mr-2"></i>
                 Đăng tin
               </a>
 
-              <a href="#">
-                <i class="fas fa-tasks mr-2"></i>
+              <a href="/profile/manage">
+                <i className="fas fa-tasks mr-2"></i>
                 Quản lý tin đăng
               </a>
 
-              <a href="#">
-                <i class="fas fa-edit mr-2"></i>
+              <a href="/profile/edit">
+                <i className="fas fa-edit mr-2"></i>
                 Sửa thông tin cá nhân
               </a>
 
-              <a href="#">
-                <i class="fas fa-sign-out-alt mr-2"></i>
+              <a href="/logout">
+                <i className="fas fa-sign-out-alt mr-2"></i>
                 Thoát
               </a>
             </div>
@@ -435,7 +435,7 @@ function Post(props) {
                             setMyAddress(
                               event.target.options[event.target.selectedIndex]
                                 .text +
-                                " ," +
+                                ", " +
                                 myAddress
                             );
                           }}
@@ -454,7 +454,7 @@ function Post(props) {
                             setMyAddress(
                               event.target.options[event.target.selectedIndex]
                                 .text +
-                                " ," +
+                                ", " +
                                 myAddress
                             );
                           }}
@@ -473,7 +473,7 @@ function Post(props) {
                             setMyAddress(
                               event.target.options[event.target.selectedIndex]
                                 .text +
-                                " ," +
+                                ", " +
                                 myAddress
                             );
                           }}
@@ -492,7 +492,7 @@ function Post(props) {
                         value={myHouse}
                         onChange={(event) => {
                           setMyHouse(event.target.value);
-                          setMyAddress(event.target.value + " ," + myAddress);
+                          setMyAddress(event.target.value + ", " + myAddress);
                         }}
                       ></textarea>
                     </div>
@@ -574,62 +574,82 @@ function Post(props) {
 
                     <div className="form-group">
                       <label>Thông tin liên hệ</label>
-                      <textarea
-                        style={{ width: "40%" }}
-                        className="form-control"
-                        rows="1"
-                        readOnly
-                        value={props.data.currentUser[0].phoneUser}
-                      ></textarea>
+                      <div className="textarea-custom">
+                        <textarea
+                          style={{ width: "30%" }}
+                          className="form-control"
+                          rows="1"
+                          readOnly
+                          value={props.data.currentUser[0].phoneUser}
+                        ></textarea>
+                        <i className="fas fa-phone"></i>
+                      </div>
                     </div>
 
                     <div className="form-group">
                       <label>Giá cho thuê</label>
-                      <textarea
-                        style={{ width: "40%" }}
-                        className="form-control"
-                        rows="1"
-                        value={price}
-                        onChange={(event) => {
-                          setPrice(event.target.value);
-                        }}
-                      ></textarea>
+                      <div className="textarea-custom">
+                        <textarea
+                          style={{ width: "30%" }}
+                          className="form-control"
+                          rows="1"
+                          value={price !== undefined ? validate.getNumberInPost(price) : ''}
+                          onChange={(event) => {
+                            console.log(event.target.value)
+                            setPrice(event.target.value);
+                          }}
+                        ></textarea>
+                        <i className="fas fa-dollar-sign"></i>
+                      </div>
                       <span className="err">{msgValidation.errPrice}</span>
                     </div>
 
                     <div className="form-group">
                       <label>Diện tích</label>
-                      <textarea
-                        style={{ width: "40%" }}
-                        className="form-control"
-                        rows="1"
-                        value={square}
-                        onChange={(event) => setSquare(event.target.value)}
-                      ></textarea>
+                      <div className="textarea-custom">
+                        <textarea
+                          style={{ width: "30%" }}
+                          className="form-control"
+                          rows="1"
+                          value={square}
+                          onChange={(event) => setSquare(event.target.value)}
+                        ></textarea>
+                        <i className="fas">
+                          m<sup>2</sup>
+                        </i>
+                      </div>
                       <span className="err">{msgValidation.errSquare}</span>
                     </div>
 
                     <div className="form-group">
                       <label>Phòng ngủ</label>
-                      <textarea
-                        style={{ width: "40%" }}
-                        className="form-control"
-                        rows="1"
-                        value={bedroom}
-                        onChange={(event) => setBedroom(event.target.value)}
-                      ></textarea>
+                      <div className="textarea-custom">
+                        <textarea
+                          style={{ width: "30%" }}
+                          className="form-control"
+                          rows="1"
+                          value={bedroom}
+                          onChange={(event) => setBedroom(event.target.value)}
+                        ></textarea>
+                        <i className="fas fa-bed"></i>
+                      </div>
+
                       <span className="err">{msgValidation.errBedroom}</span>
                     </div>
 
                     <div className="form-group">
                       <label>Nhà vệ sinh</label>
-                      <textarea
-                        style={{ width: "40%" }}
-                        className="form-control"
-                        rows="1"
-                        value={toilet}
-                        onChange={(event) => setToilet(event.target.value)}
-                      ></textarea>
+                      <div className="textarea-custom">
+                        <textarea
+                          style={{ width: "30%" }}
+                          className="form-control"
+                          rows="1"
+                          value={toilet}
+                          onChange={(event) => setToilet(event.target.value)}
+                        ></textarea>
+                        <i class="fas fa-toilet"></i>
+                      </div>
+
                       <span className="err">{msgValidation.errToilet}</span>
                     </div>
                   </div>
@@ -650,8 +670,6 @@ function Post(props) {
                       multiple
                       onChange={uploadImg}
                     />
-                    
-
                   </div>
                   <span className="err">{msgValidation.errImg}</span>
                   <div className="img-show mt-4">
@@ -661,7 +679,7 @@ function Post(props) {
                           src='https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg'
                           className='detail'>
                           </img>
-                          <button className="delete"><i class="fas fa-trash-alt mr-1"></i>Xóa</button>
+                          <button className="delete"><i className="fas fa-trash-alt mr-1"></i>Xóa</button>
                         </div> */}
                       {elmImg}
                     </div>

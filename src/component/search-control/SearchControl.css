@@ -1,14 +1,31 @@
 .search-control {
-    height: 60px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-control .search {
+    display: flex;
+    align-items: center;
+    width: 400px;
+}
+
+.search-control .filter {
+    height: 80px;
+    width: 200px;
     display: flex;
     align-items: center;
 }
 
-.search-to-buy {
-   
+.search-control .filter > select{
+    padding-left: 40px;
 }
 
-.all-select {
-    width: 180px;
-    height: 38px;
+.search-control .filter .icon {
+    position: absolute;
+    padding: 10px;
+    font-size: 20px; 
+    min-width: 50px; 
+    text-align: center; 
 }
+

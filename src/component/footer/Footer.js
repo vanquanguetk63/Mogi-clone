@@ -4,7 +4,7 @@ import image from '../../image';
 
 function Footer(props) {
     return (
-        <div className="footer mt-5"> 
+        <div className="footer"> 
             <div className="container" style={{height:'100%'}} >
                 <div className="row" style={{fontSize:'12px', textAlign:'inherit'}}>
                     <div className="col-md-3 mt-2">

@@ -11,16 +11,16 @@ function Filter(props) {
             <div className="content">
                 <ul >
                     <li className="m-1">
-                        <a href="#"> <i class="fal fa-chevron-circle-right"></i> Nhà </a>
+                        <a href="#"> <i className="fal fa-chevron-circle-right"></i> Nhà </a>
                     </li>
                     <li className="m-1">
-                        <a href="#"><i class="fal fa-chevron-circle-right"></i> Căn hộ </a>
+                        <a href="#"><i className="fal fa-chevron-circle-right"></i> Căn hộ </a>
                     </li>
                     <li className="m-1">
-                        <a href="#"><i class="fal fa-chevron-circle-right"></i> Đất </a>
+                        <a href="#"><i className="fal fa-chevron-circle-right"></i> Đất </a>
                     </li>
                     <li className="m-1">
-                        <a href="#"><i class="fal fa-chevron-circle-right"></i> Mặt</a>
+                        <a href="#"><i className="fal fa-chevron-circle-right"></i> Mặt</a>
                     </li>
                 </ul>
             </div>
