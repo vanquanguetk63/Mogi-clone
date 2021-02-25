@@ -7,18 +7,45 @@ import Filter from "../../component/filter/Filter";
 import rent from "../../api/rent";
 import buy from "../../api/buy";
 import search from "../../api/search";
+import { useHistory, useLocation } from "react-router-dom";
 
 function Rent(props) {
   const [listItem, setListItem] = useState();
+  const location = useLocation();
+  const history = useHistory();
 
   useEffect(() => {
-    rent
-      .GetToRent()
-      .then((response) => {
-        console.log(response);
-        setListItem(response);
-      })
-      .catch(console.error());
+    if (location.pathname.includes("search")) {
+      let state = location.state;
+      if (state === undefined) {
+        history.push("/rent");
+      } else {
+        search
+          .Search(state)
+          .then((response) => {
+            if (response === "is loaded") {
+              // call api
+              rent
+                .GetToRent()
+                .then((response) => {
+                  setListItem(response);
+                })
+                .catch(console.error());
+            } else {
+              setListItem(response);
+            }
+          })
+          .catch(console.error());
+      }
+    } else {
+      rent
+        .GetToRent()
+        .then((response) => {
+          console.log(response);
+          setListItem(response);
+        })
+        .catch(console.error());
+    }
   }, []);
 
   const Search = (data) => {
@@ -48,18 +75,14 @@ function Rent(props) {
 
   return (
     <div className="container rent py-3">
-      <SearchControl
-        purpose="2"
-        data={props.data}
-        PassEvent={Search}
-      />
+      <SearchControl purpose="2" data={props.data} PassEvent={Search} dataSearch={location.state}/>
       <div className="row set-align">
         <div className="col-12 col-md-8">
           <div className="result mb-3">
             <div className="ml-2">1 - 15 trong 100.000 kết quả</div>
           </div>
           {listItem !== undefined
-            ? listItem.map((obj) => <Item key={obj.idPost} data={obj} />)
+            ? listItem.map((obj) => <Item   state={props.data} key={obj.idPost} data={obj} />)
             : ""}
         </div>
 
@@ -68,7 +91,7 @@ function Rent(props) {
             <img className="img-ads" src={ads} alt=""></img>
           </div>
 
-          <Filter />
+          {/* <Filter /> */}
         </div>
       </div>
     </div>

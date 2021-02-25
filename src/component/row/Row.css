@@ -1,0 +1,25 @@
+.myrow {
+    height: 100px;
+}
+
+.myrow > td {
+    font-size: 13px;
+    padding-top: 5px;
+}
+
+.myrow .myrow-img {
+    height: 90px;
+    width: 150px;
+}
+
+.myrow .row-check > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.myrow .row-check > div > i {
+    
+    cursor: pointer;
+}

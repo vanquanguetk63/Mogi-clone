@@ -1,0 +1,35 @@
+.item-manage {
+    height: 150px;
+    display: flex;
+}
+
+.item-manage .item-img {
+    width: 250px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-manage .item-img .mng-img {
+    width: 200px;
+    height: 90%;
+}
+
+.item-manage .mng-content {
+    height: 100%;
+    width: 750px;
+    margin-left: 5px;
+    padding: 10px;
+    line-height: normal;
+}
+
+.item-manage .mng-action {
+    height: 100%;
+    width: calc(100% - 1000px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+

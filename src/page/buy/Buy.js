@@ -6,7 +6,6 @@ import ads from "../../img/right.jpg";
 import Filter from "../../component/filter/Filter";
 import buy from "../../api/buy";
 import { withRouter } from "react-router-dom";
-import Search from "../../component/search/Search";
 import search from "../../api/search";
 
 class Buy extends Component {
@@ -18,21 +17,45 @@ class Buy extends Component {
   }
 
   componentDidMount() {
-    // console.log(this.props.location.state);
-    // call api
-    buy
-      .GetToBuy()
-      .then((response) => {
-        this.setState({
-          listItem: response,
-        });
-      })
-      .catch(console.error());
+    if (this.props.location.pathname.includes("search")) {
+      let state = this.props.location.state;
+      if (state === undefined) {
+        this.props.history.push("/buy");
+      } else {
+        search
+          .Search(state)
+          .then((response) => {
+            if (response === "is loaded") {
+              // call api
+              buy
+                .GetToBuy()
+                .then((response) => {
+                  this.setState({
+                    listItem: response,
+                  });
+                })
+                .catch(console.error());
+            } else {
+              this.setState({
+                listItem: response,
+              });
+            }
+          })
+          .catch(console.error());
+      }
+    }
+    {
+      // call api
+      buy
+        .GetToBuy()
+        .then((response) => {
+          this.setState({
+            listItem: response,
+          });
+        })
+        .catch(console.error());
+    }
   }
-
-  // componentDidUpdate(prevProps, prevState, snapShot)() {
-
-  // }
 
   Search(data) {
     if (
@@ -66,7 +89,7 @@ class Buy extends Component {
     var elmItem = {};
     if (this.state.listItem !== undefined) {
       elmItem = this.state.listItem.map((obj) => {
-        return <Item data={obj} />;
+        return <Item state={this.props.data} data={obj} />;
       });
     }
 
@@ -78,6 +101,7 @@ class Buy extends Component {
               PassEvent={this.Search.bind(this)}
               purpose="1"
               data={this.props.data}
+              dataSearch={this.props.location.state}
             />
           </div>
 
@@ -94,7 +118,7 @@ class Buy extends Component {
               <div>
                 <img className="img-buy" src={ads} alt=""></img>
               </div>
-              <Filter />
+              {/* <Filter /> */}
             </div>
           </div>
         </div>

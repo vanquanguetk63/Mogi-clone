@@ -1,7 +1,8 @@
 import logo from "../../img/logo.svg";
 import React, { Component } from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import DelayLink from "../delay/DelayLink";
 
 class Header extends Component {
   constructor(props) {
@@ -30,31 +31,27 @@ class Header extends Component {
                 Thuê nhà
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Giá nhà đất
-              </a>
-            </li>
+           
           </ul>
 
           <div style={{ flexGrow: 0 }}></div>
 
           {isLogin === true ? (
             <>
-              <button className="btn-custom btn-profile mr-3">
-                <i className="fas fa-user-circle"></i> {this.props.data.currentUser[0].nameUser}
+              <button
+                className="btn-custom btn-profile mr-3"
+                onClick={() => this.props.history.push("/profile/edit")}
+              >
+                <i className="fas fa-user-circle"></i>{" "}
+                {this.props.data.currentUser[0].nameUser}
               </button>
               <Link to="/profile/post">
-              <button className="btn-custom btn-post">Đăng tin</button>
+                <button className="btn-custom btn-post">Đăng tin</button>
               </Link>
             </>
           ) : (
-            <Link to={'/Login'}> 
-              <button
-                className="btn-custom btn-login mr-3"
-              >
-                Đăng nhập
-              </button>
+            <Link to={"/Login"}>
+              <button className="btn-custom btn-login mr-3">Đăng nhập</button>
             </Link>
           )}
         </nav>
@@ -63,4 +60,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);

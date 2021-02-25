@@ -6,11 +6,34 @@ import ads from "../../img/right.jpg";
 import Profile from "../../component/profile/Profile";
 import house from "../../api/house";
 import validate from "../../lib/validate";
+import { withRouter } from "react-router-dom";
+import user from "../../api/user";
 
 function House(props) {
   const [id, setId] = useState();
   const [data, setData] = useState();
   const [collection, setCollection] = useState();
+  const [save, setSave] = useState(false);
+
+  const handleSave = () => {
+    if (props.data.isLogin === true) {
+      if (!save === true) {
+        let data = {};
+        data.id = props.data.currentUser[0].idUser;
+        data.idPost = props.match.params.id;
+        user.SaveToFavorite(data).then((response) => {
+            setSave(true);
+        });
+      } else {
+        let data = {};
+        data.id = props.data.currentUser[0].idUser;
+        data.idPost = props.match.params.id;
+        user.DeleteFromFavorite(data).then((response) => {
+            setSave(false);
+        });
+      }
+    }
+  };
 
   useEffect(() => {
     setId(props.match.params.id);
@@ -27,6 +50,17 @@ function House(props) {
         setCollection(response);
       })
       .catch(console.error());
+
+    if (props.data.isLogin === true) {
+      let data = {};
+      data.id = props.data.currentUser[0].idUser;
+      data.idPost = props.match.params.id;
+      user.CheckIdIsFavorite(data).then((response) => {
+        if (response.data.length > 0) {
+          setSave(true);
+        }
+      });
+    }
   }, []);
 
   return (
@@ -41,17 +75,25 @@ function House(props) {
               <SlideShow input={collection} />
               <br />
               <div>
-                <b style={{fontSize: '20px'}}>
+                <b style={{ fontSize: "20px" }}>
                   <p>{data[0].title}</p>
                 </b>
                 <p>{data[0].address}</p>
-                <p style={{fontSize: '20px', color: '#337ab7', fontWeight: 'bold'}}>{validate.getNumberWithCommas(data[0].price)} VND</p>
+                <p
+                  style={{
+                    fontSize: "20px",
+                    color: "#337ab7",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {validate.getNumberWithCommas(data[0].price)} VND
+                </p>
               </div>
 
               <div className="content">
                 <div className="title">
                   <b>
-                    <p style={{fontSize: '20px'}}>Thông tin chính</p>
+                    <p style={{ fontSize: "20px" }}>Thông tin chính</p>
                   </b>
                 </div>
                 <div>
@@ -59,7 +101,7 @@ function House(props) {
                     <li>
                       <span className="row1">Diện tích đất</span>
                       <span className="row1-content">
-                        {data[0].square}m<sup>2</sup> 
+                        {data[0].square}m<sup>2</sup>
                       </span>
                     </li>
                     <li>
@@ -68,7 +110,9 @@ function House(props) {
                     </li>
                     <li>
                       <span className="row1">Ngày đăng</span>
-                      <span className="row1-content">{validate.validateDay(data[0].CreateAt)}</span>
+                      <span className="row1-content">
+                        {validate.validateDay(data[0].CreateAt)}
+                      </span>
                     </li>
                     <li>
                       <span className="row1">Phòng ngủ</span>
@@ -88,14 +132,20 @@ function House(props) {
                 <div className="description">
                   <div className="title">
                     <b>
-                      <p style={{fontSize: '20px'}}>Giới thiệu</p>
+                      <p style={{ fontSize: "20px" }}>Giới thiệu</p>
                     </b>
                   </div>
-                  <div className="content" dangerouslySetInnerHTML={{__html: data[0].description}}></div>
+                  <div
+                    className="content"
+                    dangerouslySetInnerHTML={{ __html: data[0].description }}
+                  ></div>
                 </div>
                 <br></br>
                 <div className="mb-2">
-                  <button type="button" className="btn btn-outline-warning btn-sm">
+                  <button
+                    type="button"
+                    className="btn btn-outline-warning btn-sm"
+                  >
                     Báo cáo vi phạm{" "}
                     <i
                       className="fa fa-exclamation-triangle"
@@ -105,7 +155,7 @@ function House(props) {
                 </div>
 
                 <div>
-                  <Profile data={data}/>
+                  <Profile data={data} />
                 </div>
               </div>
             </div>
@@ -113,7 +163,7 @@ function House(props) {
             <div className="col-0 col-md-4 hh">
               <div className="contact">
                 <div className="contact-user">
-                  <Profile data={data}/>
+                  <Profile data={data} />
                 </div>
                 <br />
                 <div className="phone-message">
@@ -122,18 +172,18 @@ function House(props) {
                       <i className="fa fa-phone mr-1" aria-hidden="true"></i>
                       {data[0].phoneUser}
                     </button>
-                    <button className="btn btn-outline-secondary ">
-                      <i className="far fa-envelope mr-1"></i>
-                      Gửi tin nhắn
+                    <button
+                      className={
+                        save === true
+                          ? "btn btn-outline-secondary save"
+                          : "btn btn-outline-secondary"
+                      }
+                      onClick={handleSave}
+                    >
+                      <i className="far fa-save mr-1"></i>
+                      Lưu tin
                     </button>
                   </div>
-                </div>
-
-                <div className="save-post mt-2">
-                  <button className="btn btn-outline-secondary save">
-                    <i className="far fa-save mr-1"></i>
-                    Lưu tin
-                  </button>
                 </div>
               </div>
             </div>

@@ -9,13 +9,11 @@ async function Search(data) {
     data.idType === 0 &&
     data.price === 0
   ) {
-      console.log('back');
     return status;
   } else {
     let url = 'http://localhost:8080/api/search';
     await axios.post(url, {data: data})
     .then(response => {
-        console.log(response);
         arr = response.data;
     })
     .catch(error => {

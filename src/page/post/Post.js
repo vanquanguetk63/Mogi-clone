@@ -8,6 +8,7 @@ import upload from "../../api/upload";
 import "../post/Post.css";
 import { useHistory } from "react-router-dom";
 import validate from "../../lib/validate";
+import { Confirm } from "react-st-modal";
 
 function Post(props) {
   const [id, setId] = useState();
@@ -38,6 +39,35 @@ function Post(props) {
 
   const history = useHistory();
 
+  async function handlePost(data) {
+    const result = await Confirm("Сonfirmation text", "Сonfirmation title");
+
+    if (result) {
+      post
+        .PostToServer(data)
+        .then((response) => {
+          if (response === 200) {
+            if (img !== "") {
+              let listImg = {};
+              listImg.img = img;
+              listImg.idPost = id;
+              post
+                .PostImgToServer(listImg)
+                .then((response) => {
+                  if (response === 200) {
+                    history.push("/");
+                  }
+                })
+                .catch(console.error());
+            }
+          }
+        })
+        .catch(console.error());
+    } else {
+      // Сonfirmation not confirmed
+    }
+  }
+
   var msg = {
     errAddress: "",
     errType: "",
@@ -51,9 +81,19 @@ function Post(props) {
     errImg: "",
   };
 
-  useEffect(() => {
-    
+  async function logout() {
+    const result = await Confirm("Bạn muốn thoát chứ?", "Đăng xuất");
 
+    if (result) {
+      localStorage.removeItem("user");
+      props.onLogOut();
+      history.push("/");
+    } else {
+      // Сonfirmation not confirmed
+    }
+  }
+
+  useEffect(() => {
     if (id === undefined) {
       post
         .GetNewId()
@@ -233,39 +273,20 @@ function Post(props) {
     data.title = title;
     data.description = des;
     data.address = myAddress;
-    data.price = price.split('.').join("");
+    data.price = price.split(".").join("");
     data.square = square;
     data.idUser = props.data.currentUser[0].idUser;
     data.idProvince = myProvince;
     data.idDistrict = myDistrict;
     data.idWard = myWard;
     data.idStreet = myStreet;
-    data.approval = 1;
+    data.approval = 2;
     data.idPurpose = myPurpose;
     data.idType = myType;
     data.bedroom = bedroom;
     data.toilet = toilet;
 
-    post
-      .PostToServer(data)
-      .then((response) => {
-        if (response === 200) {
-          if (img !== "") {
-            let listImg = {};
-            listImg.img = img;
-            listImg.idPost = id;
-            post
-              .PostImgToServer(listImg)
-              .then((response) => {
-                if (response === 200) {
-                  history.push("/");
-                }
-              })
-              .catch(console.error());
-          }
-        }
-      })
-      .catch(console.error());
+    handlePost(data);
   };
 
   const uploadImg = (event) => {
@@ -365,11 +386,11 @@ function Post(props) {
         <div className="row post-row">
           <div className="col-md-2 left">
             <div className="mt-3">
-              <Profile data={props.data.currentUser}/>
+              <Profile data={props.data.currentUser} />
             </div>
             <br />
 
-            <div className="nav-custom mt-4">
+            <div className="nav-custom mt-1">
               <a className="active" href="/profile/post">
                 <i className="fas fa-pen-square mr-2"></i>
                 Đăng tin
@@ -382,10 +403,10 @@ function Post(props) {
 
               <a href="/profile/edit">
                 <i className="fas fa-edit mr-2"></i>
-                Sửa thông tin cá nhân
+                Sửa thông tin
               </a>
 
-              <a href="/logout">
+              <a onClick={logout}>
                 <i className="fas fa-sign-out-alt mr-2"></i>
                 Thoát
               </a>
@@ -593,9 +614,13 @@ function Post(props) {
                           style={{ width: "30%" }}
                           className="form-control"
                           rows="1"
-                          value={price !== undefined ? validate.getNumberInPost(price) : ''}
+                          value={
+                            price !== undefined
+                              ? validate.getNumberInPost(price)
+                              : ""
+                          }
                           onChange={(event) => {
-                            console.log(event.target.value)
+                            console.log(event.target.value);
                             setPrice(event.target.value);
                           }}
                         ></textarea>

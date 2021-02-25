@@ -51,6 +51,10 @@
     font-size: 15px;
 }
 
+.save {
+    background-color: #acafb5;
+}
+
 
 
 @media only screen and (max-width: 1200px) {

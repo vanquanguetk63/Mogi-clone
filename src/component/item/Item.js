@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import buy from "../../api/buy";
+import user from "../../api/user";
 import validate from "../../lib/validate";
 import "../item/Item.css";
 
@@ -25,10 +26,47 @@ function Item(props) {
     let day = validate.validateDay(props.data.CreateAt);
     setTime(day);
     validatePrice();
+
+    if (props.data.isLogin === true) {
+      let data2 = {};
+      data2.id = props.state.currentUser[0].idUser;
+      data2.idPost = props.data.idPost;
+      user
+        .CheckIdIsFavorite(data2)
+        .then((response) => {
+          console.log(response);
+          if (response.data.length > 0) {
+            isFavorite(true);
+          }
+        })
+        .catch(console.error());
+    }
   }, []);
 
   const handleClick = () => {
-    isFavorite(!favorite);
+    if (props.data.isLogin === true) {
+      let data2 = {};
+      data2.id = props.state.currentUser[0].idUser;
+      data2.idPost = props.data.idPost;
+      if (!favorite === true) {
+        user
+          .SaveToFavorite(data2)
+          .then((response) => {
+            console.log(response);
+            isFavorite(true);
+          })
+          .catch(console.error());
+      } else {
+        user
+          .DeleteFromFavorite(data2)
+          .then((response) => {
+            isFavorite(false);
+          })
+          .catch(console.error());
+      }
+      isFavorite(!favorite);
+    } else {
+    }
   };
 
   const validatePrice = () => {

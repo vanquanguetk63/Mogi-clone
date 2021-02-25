@@ -1,0 +1,84 @@
+table,
+th,
+td {
+  text-align: left;
+}
+
+table {
+  overflow-y: auto;
+}
+
+th {
+  font-weight: normal;
+}
+
+td {
+  vertical-align: top;
+}
+
+tr:nth-child(odd) {
+  background: #ede7d8;
+}
+
+.mytbl {
+  height: 90%;
+  width: 95%;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.mytbl .tbl-post-title {
+  height: 50px;
+}
+
+.mytbl .tbl-post-title > th {
+  text-align: center;
+}
+
+.mytbl .tbl-admin {
+  height: 70px;
+}
+
+.mytbl .tbl-admin > th {
+  font-weight: bold;
+}
+
+.mytbl .tbl-img {
+  width: 150px;
+}
+
+.mytbl .tbl-title {
+  width: 150px;
+}
+
+.mytbl .tbl-address {
+  width: 150px;
+}
+
+.mytbl .tbl-price {
+  width: 80px;
+}
+
+.mytbl .tbl-square {
+  width: 40px;
+}
+
+.mytbl .tbl-bedroom {
+  width: 40px;
+}
+
+.mytbl .tbl-toilet {
+  width: 40px;
+}
+
+.mytbl .tbl-purpose {
+  width: 80px;
+}
+
+.mytbl .tbl-approve {
+  width: 80px;
+}
+
+.mytbl .tbl-action {
+  width: 80px;
+}

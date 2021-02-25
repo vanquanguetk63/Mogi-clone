@@ -3,6 +3,7 @@ import "../card/Card.css";
 import image from "../../api/post";
 import validate from "../../lib/validate";
 import buy from "../../api/buy";
+import { withRouter } from "react-router-dom";
 
 function Card(props) {
   const [img, setImg] = useState();
@@ -30,7 +31,7 @@ function Card(props) {
   });
 
   const RedirectoHome = () => {
-      console.log(props.purpose);
+      props.history.push(`/house/${props.data.idPost}`)
   }
 
   return (
@@ -66,4 +67,4 @@ function Card(props) {
   );
 }
 
-export default Card;
+export default withRouter(Card);

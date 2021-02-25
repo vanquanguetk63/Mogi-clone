@@ -8,6 +8,16 @@ function SearchControl(props) {
   const [idType, setIdType] = useState(0);
   const [price, setPrice] = useState(0);
 
+
+  useEffect(() => {
+    if (props.dataSearch !== undefined) {
+      setSearch(props.dataSearch.search);
+      setIdProvince(props.dataSearch.idProvince);
+      setIdType(props.dataSearch.idType);
+      setPrice(props.dataSearch.price);
+    }
+  }, [])
+
   const SetData = () => {
     let data = {};
     data.search = search;
@@ -30,7 +40,7 @@ function SearchControl(props) {
       </div>
       <div className="filter">
         <i className="fas fa-map-marker-alt icon"></i>
-        <select className="custom-select" onChange = {(event) => setIdProvince(event.target.value)}>
+        <select className="custom-select" onChange = {(event) => setIdProvince(event.target.value)} value={idProvince}>
           <option value="0">Thành phố</option>
           {props.data.listProvince.length !== 0
             ? props.data.listProvince.map((obj) => {
@@ -45,7 +55,7 @@ function SearchControl(props) {
       </div>
       <div className="filter">
         <i className="fas fa-home icon"></i>
-        <select className="custom-select" onChange = {(event) => setIdType(event.target.value)}>
+        <select className="custom-select" onChange = {(event) => setIdType(event.target.value)} value={idType}>
           <option value="0">Loại bất động sản</option>
           {props.data.listType1.length !== undefined
             ? props.purpose === "1"
@@ -68,7 +78,7 @@ function SearchControl(props) {
       </div>
       <div className="filter">
         <i className="fas fa-dollar-sign icon"></i>
-        <select className="custom-select" onChange = {(event) => setPrice(event.target.value)}>
+        <select className="custom-select" onChange = {(event) => setPrice(event.target.value)} value={price}>
           <option value="0">Giá cả</option>
           {props.data.priceForBuy.length !== undefined
             ? props.purpose === "1"

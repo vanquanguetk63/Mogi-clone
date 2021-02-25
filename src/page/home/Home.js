@@ -6,7 +6,7 @@ import Select from "../../component/select/Select";
 import List from "../../component/list/List";
 import addess from "../../api/addess";
 import type from "../../api/type";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 
 const priceForBuy = [
   { id: 1, value: 500000000, name: " < 500 triệu" },
@@ -75,18 +75,18 @@ class Home extends Component {
   }
 
   Search() {
-    this.props.history.push({
-      pathname: "/buy",
-      state: this.state,
-    });
+    if (this.state.purpose === '1' ) {
+      this.props.history.push({
+        pathname: "/buy/search",
+        state: this.state,
+      });
+    } else {
+      this.props.history.push({
+        pathname: "/rent/search",
+        state: this.state,
+      });
+    }
 
-    this.setState({
-      search: "",
-      purpose: 1,
-      idProvince: 0,
-      idType: 0,
-      price: 0,
-    });
   }
 
   render() {
@@ -119,9 +119,7 @@ class Home extends Component {
                   >
                     <a style={{ cursor: "pointer" }}>Thuê</a>
                   </li>
-                  <li className="nav-item mr-5">
-                    <a href="#">Giá Nhà đất</a>
-                  </li>
+              
                 </ul>
                 <div className="search-home">
                   <Search
@@ -225,4 +223,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);
