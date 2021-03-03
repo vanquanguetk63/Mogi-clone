@@ -28,7 +28,7 @@ function Card(props) {
     }  
     
     setStrPrice(str);
-  }, []);
+  }, [img]);
 
   const RedirectoHome = () => {
       props.history.push(`/house/${props.data.idPost}`)
