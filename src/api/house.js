@@ -1,7 +1,8 @@
 import axios from 'axios';
+import constant from './constant';
 
 async function GetHouseByID(id) {
-    let url = 'http://localhost:8080/api/house/' + id;
+    let url = constant.URL_API + '/house/' + id;
     let data;
     await axios.get(url)
     .then(response => {

@@ -1,7 +1,8 @@
 import axios from 'axios';
+import constant from './constant';
 
 async function GetNewId() {
-    let url = 'http://localhost:8080/api/post/id';
+    let url = constant.URL_API + '/post/id';
     let id = 0;
     await axios.get(url)
     .then(response => {
@@ -14,7 +15,7 @@ async function GetNewId() {
 }
 
 async function PostToServer(data) {
-    let url = 'http://localhost:8080/api/post';
+    let url = constant.URL_API + '/post';
     let status;
     await axios.post(url, {data: data})
     .then(response => {
@@ -26,7 +27,7 @@ async function PostToServer(data) {
 }
 
 async function PostImgToServer(data) {
-    let url = 'http://localhost:8080/api/post/image';
+    let url = constant.URL_API + '/post/image';
     let status;
     await axios.post(url, {data: data})
     .then(response => {

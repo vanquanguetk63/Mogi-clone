@@ -1,8 +1,9 @@
 import axios from 'axios';
+import constant from './constant';
 
 
 async function GetPostIsApproved() {
-    let url = 'http://localhost:8080/api/admin';
+    let url = constant.URL_API + '/admin';
     let province = [];
     await axios.get(url)
     .then(response => {
@@ -15,7 +16,7 @@ async function GetPostIsApproved() {
 }
 
 async function GetPostIsNotApproved() {
-    let url = 'http://localhost:8080/api/admin/approve';
+    let url = constant.URL_API + '/admin/approve';
     let province = [];
     await axios.get(url)
     .then(response => {
@@ -41,7 +42,7 @@ async function UpdatePost(data) {
 }
 
 async function DeletePost(data) {
-    let url = 'http://localhost:8080/api/admin/delete';
+    let url = constant.URL_API + '/admin/delete';
     let province = [];
     await axios.post(url, data)
     .then(response => {

@@ -1,7 +1,8 @@
 import axios from 'axios';
+import constant from './constant';
 
 async function GetToRent() {
-    let url = 'http://localhost:8080/api/rent';
+    let url = constant.URL_API + '/rent';
     let data;
     await axios.get(url)
     .then(response => {
@@ -14,7 +15,7 @@ async function GetToRent() {
 }
 
 async function GetImageById(data) {
-    let url = 'http://localhost:8080/api/rent/image';
+    let url = constant.URL_API + '/rent/image';
   
     await axios.post(url, {data: data})
     .then(response => {
@@ -27,7 +28,7 @@ async function GetImageById(data) {
 }
 
 async function GetToRentLimit() {
-    let url = 'http://localhost:8080/api/rent/5';
+    let url = constant.URL_API + '/rent/5';
     let data;
     await axios.get(url)
     .then(response => {

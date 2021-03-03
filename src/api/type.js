@@ -1,11 +1,12 @@
 import axios from "axios";
+import constant from "./constant";
 
 /**
  * Lấy dữ liệu bảng purpose
  */
 async function GetPurpose() {
     let purpose = [];
-    let url = 'http://localhost:8080/api/type/';
+    let url = constant.URL_API + '/type/';
     await axios.get(url)
     .then(response => {
         purpose = response.data;
@@ -19,7 +20,7 @@ async function GetPurpose() {
  */
 async function GetTypeByID(idPurpose) {
     let type = [];
-    let url = 'http://localhost:8080/api/type/purpose/' + idPurpose;
+    let url = constant.URL_API + '/type/purpose/' + idPurpose;
     await axios.get(url)
     .then(response => {
         type = response.data;

@@ -27,7 +27,9 @@ function Item(props) {
     setTime(day);
     validatePrice();
 
-    if (props.data.isLogin === true) {
+    console.log(props.state.isLogin);
+
+    if (props.state.isLogin === true) {
       let data2 = {};
       data2.id = props.state.currentUser[0].idUser;
       data2.idPost = props.data.idPost;
@@ -44,7 +46,7 @@ function Item(props) {
   }, []);
 
   const handleClick = () => {
-    if (props.data.isLogin === true) {
+    if (props.state.isLogin === true) {
       let data2 = {};
       data2.id = props.state.currentUser[0].idUser;
       data2.idPost = props.data.idPost;
@@ -52,7 +54,6 @@ function Item(props) {
         user
           .SaveToFavorite(data2)
           .then((response) => {
-            console.log(response);
             isFavorite(true);
           })
           .catch(console.error());
@@ -65,7 +66,6 @@ function Item(props) {
           .catch(console.error());
       }
       isFavorite(!favorite);
-    } else {
     }
   };
 

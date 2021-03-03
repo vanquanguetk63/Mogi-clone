@@ -1,4 +1,5 @@
 import axios from "axios";
+import constant from "./constant";
 
 /**
  * Lấy dữ liệu bằng số điện thoại
@@ -7,7 +8,7 @@ import axios from "axios";
 async function SearchByPhone(phone) {
   var isExist = false;
   if (phone !== "") {
-    var url = "http://localhost:8080/api/user/search?phone=" + phone;
+    var url = constant.URL_API + "/user/search?phone=" + phone;
     await axios
       .get(url)
       .then((response) => (isExist = response.data))
@@ -22,7 +23,7 @@ async function SearchByPhone(phone) {
  */
 async function SignUp(data) {
   let status = "";
-  var url = "http://localhost:8080/api/user/signup";
+  var url = constant.URL_API + "/user/signup";
   await axios
     .post(url, { data: data })
     .then((response) => {
@@ -38,7 +39,7 @@ async function SignUp(data) {
  */
 async function Login(data) {
   let status = {};
-  var url = "http://localhost:8080/api/user/login";
+  var url = constant.URL_API + "/user/login";
   await axios
   .post(url, {data: data})
   .then((response) => {

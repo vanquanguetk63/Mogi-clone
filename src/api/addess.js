@@ -1,10 +1,11 @@
 import axios from 'axios';
+import constant from './constant';
 
 /**
  * Lấy danh sách tất cả các tỉnh
  */
 async function GetByProvince() {
-    let url = 'http://localhost:8080/api/address/province';
+    let url = constant.URL_API + '/address/province';
     let province = [];
     await axios.get(url)
     .then(response => {
@@ -20,7 +21,7 @@ async function GetByProvince() {
  * Lấy danh sách các quận/huyện theo id của 1 tỉnh.
  */
 async function GetByDistrict(idProvince) {
-    let url = 'http://localhost:8080/api/address/province/' + idProvince;
+    let url = constant.URL_API + '/address/province/' + idProvince;
     let district = [];
     await axios.get(url)
     .then(response => {
@@ -37,7 +38,7 @@ async function GetByDistrict(idProvince) {
  * @param {*} id 
  */
 async function GetByWard(idProvince, idDistrict) {
-    let url = 'http://localhost:8080/api/address/province/' + idProvince + '/?district=' + idDistrict;
+    let url = constant.URL_API + '/address/province/' + idProvince + '/?district=' + idDistrict;
     let ward = [];
     await axios.get(url)
     .then(response => {
@@ -54,7 +55,7 @@ async function GetByWard(idProvince, idDistrict) {
  * @param {*} id 
  */
 async function GetByStreet(idProvince, idDistrict) {
-    let url = 'http://localhost:8080/api/address/province/' + idProvince + '/?district=' + idDistrict + '&ward';
+    let url = constant.URL_API + '/address/province/' + idProvince + '/?district=' + idDistrict + '&ward';
     let street = [];
     await axios.get(url)
     .then(response => {

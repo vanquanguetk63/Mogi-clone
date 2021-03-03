@@ -1,4 +1,5 @@
 import axios from "axios";
+import constant from "./constant";
 
 async function Search(data) {
   let arr = [];
@@ -11,7 +12,7 @@ async function Search(data) {
   ) {
     return status;
   } else {
-    let url = 'http://localhost:8080/api/search';
+    let url = constant.URL_API + '/search';
     await axios.post(url, {data: data})
     .then(response => {
         arr = response.data;

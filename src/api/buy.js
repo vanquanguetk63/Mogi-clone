@@ -1,7 +1,8 @@
 import axios from 'axios';
+import constant from './constant';
 
 async function GetToBuy() {
-    let url = 'http://localhost:8080/api/buy';
+    let url = constant.URL_API + '/buy';
     let data;
     await axios.get(url)
     .then(response => {
@@ -14,7 +15,7 @@ async function GetToBuy() {
 }
 
 async function GetImageById(data) {
-    let url = 'http://localhost:8080/api/buy/image';
+    let url = constant.URL_API + '/buy/image';
   
     await axios.post(url, {data: data})
     .then(response => {
@@ -27,7 +28,7 @@ async function GetImageById(data) {
 }
 
 async function GetToBuyLimit() {
-    let url = 'http://localhost:8080/api/buy/5';
+    let url = constant.URL_API + '/buy/5';
     let data;
     await axios.get(url)
     .then(response => {
