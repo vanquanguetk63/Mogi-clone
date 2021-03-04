@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import "../home/Home.css";
-import home from "../../img/home.jpg";
-import Search from "../../component/search/Search";
-import Select from "../../component/select/Select";
-import List from "../../component/list/List";
+import { withRouter } from "react-router-dom";
 import addess from "../../api/addess";
 import type from "../../api/type";
-import { Redirect, withRouter } from "react-router-dom";
+import List from "../../component/list/List";
+import Search from "../../component/search/Search";
+import home from "../../img/home.jpg";
+import "../home/Home.css";
 
 const priceForBuy = [
   { id: 1, value: 500000000, name: " < 500 triệu" },

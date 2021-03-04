@@ -47,6 +47,7 @@ function House(props) {
     house
       .GetImageById(props.match.params.id)
       .then((response) => {
+        console.log(response);
         setCollection(response);
       })
       .catch(console.error());

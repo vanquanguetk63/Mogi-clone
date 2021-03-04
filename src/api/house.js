@@ -15,7 +15,7 @@ async function GetHouseByID(id) {
 }
 
 async function GetImageById(id) {
-    let url = 'http://localhost:8080/api/house/image/' + id;
+    let url = constant.URL_API + '/house/image/' + id;
     let data;
     await axios.get(url)
     .then(response => {

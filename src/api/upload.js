@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 async function UploadImagePost(data) {
-    let url = 'http://localhost:8080/upload-images';
+    let url = 'https://mogi-clone-server.herokuapp.com/upload-images';
     let rs = '';
     await axios.post(url, data)
     .then(response => {

@@ -23,26 +23,33 @@ function Signup(props) {
             msg.errPhoneNumber = "Số điện thoại bị trùng.";
             setMsgValidation(msg);
           } else {
-            let data = {};
-            data.fullName = fullName;
-            data.phoneNumber = phoneNumber;
-            data.email = email;
-            data.password = password;
-            User.SignUp(data)
-              .then((response) => {
-                if (response === "success") {
-                  console.log("hehe");
-                  history.push({
-                    pathname: '/login',
-                  })
-                }
-              })
-              .catch((error) => console.log(error));
+            msg.errPhoneNumber = "";
+            setMsgValidation(msg);
           }
         })
         .catch((error) => console.log(error));
     }
   }, [isDone]);
+
+  const SignUp = () => {
+    if (isDone === true) {
+      let data = {};
+      data.fullName = fullName;
+      data.phoneNumber = phoneNumber;
+      data.email = email;
+      data.password = password;
+      User.SignUp(data)
+        .then((response) => {
+          if (response === "success") {
+            console.log("hehe");
+            history.push({
+              pathname: "/login",
+            });
+          }
+        })
+        .catch((error) => console.log(error));
+    }
+  };
 
   var msg = {
     errName: "",
@@ -381,7 +388,7 @@ function Signup(props) {
                 <span className="err">{msgValidation.errRePassword}</span>
               </div>
 
-              <button className="btn-custom btn-signup mt-3">
+              <button onClick={SignUp} className="btn-custom btn-signup mt-3">
                 Đăng ký <i className="fas fa-angle-right ml-3"></i>
               </button>
             </form>

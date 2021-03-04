@@ -620,7 +620,6 @@ function Post(props) {
                               : ""
                           }
                           onChange={(event) => {
-                            console.log(event.target.value);
                             setPrice(event.target.value);
                           }}
                         ></textarea>

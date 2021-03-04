@@ -51,7 +51,7 @@ async function Login(data) {
 
 async function LoginAdmin(data) {
   let status = {};
-  var url = "http://localhost:8080/api/user/admin";
+  var url = constant.URL_API + "/user/admin";
   await axios
   .post(url, {data: data})
   .then((response) => {
@@ -63,7 +63,7 @@ async function LoginAdmin(data) {
 
 async function GetNotApprovedPostByIDUser(data) {
   let status = {};
-  var url = "http://localhost:8080/api/user/0";
+  var url = constant.URL_API + "/user/0";
   await axios
   .post(url, {data: data})
   .then((response) => {
@@ -76,7 +76,7 @@ async function GetNotApprovedPostByIDUser(data) {
 async function GetApprovedPostByIDUser(data) {
 
   let status = {};
-  var url = "http://localhost:8080/api/user/1";
+  var url = constant.URL_API + "/user/1";
   await axios
   .post(url, {data: data})
   .then((response) => {
@@ -88,7 +88,7 @@ async function GetApprovedPostByIDUser(data) {
 
 async function GetIsApprovingPostByIDUser(data) {
   let status = {};
-  var url = "http://localhost:8080/api/user/2";
+  var url = constant.URL_API + "/user/2";
   await axios
   .post(url, {data: data})
   .then((response) => {
@@ -100,7 +100,7 @@ async function GetIsApprovingPostByIDUser(data) {
 
 async function GetFavorite(data) {
   let status = {};
-  var url = "http://localhost:8080/api/user/favorite";
+  var url = constant.URL_API + "/user/favorite";
   await axios
   .post(url, {data: data})
   .then((response) => {
@@ -112,7 +112,7 @@ async function GetFavorite(data) {
 
 async function SaveToFavorite(data) {
   let status = {};
-  var url = "http://localhost:8080/api/user/add";
+  var url = constant.URL_API + "/user/add";
   await axios
   .post(url, {data: data})
   .then((response) => {
@@ -124,7 +124,7 @@ async function SaveToFavorite(data) {
 
 async function DeleteFromFavorite(data) {
   let status = {};
-  var url = "http://localhost:8080/api/user/delete";
+  var url = constant.URL_API + "/user/delete";
   await axios
   .post(url, {data: data})
   .then((response) => {
@@ -136,7 +136,7 @@ async function DeleteFromFavorite(data) {
 
 async function CheckIdIsFavorite(data) {
   let status = {};
-  var url = "http://localhost:8080/api/user/getfavorite";
+  var url = constant.URL_API + "/user/getfavorite";
   await axios
   .post(url, {data: data})
   .then((response) => {

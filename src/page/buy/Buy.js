@@ -1,12 +1,11 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import buy from "../../api/buy";
+import search from "../../api/search";
 import Item from "../../component/item/Item";
 import SearchControl from "../../component/search-control/SearchControl";
-import "../buy/Buy.css";
 import ads from "../../img/right.jpg";
-import Filter from "../../component/filter/Filter";
-import buy from "../../api/buy";
-import { withRouter } from "react-router-dom";
-import search from "../../api/search";
+import "../buy/Buy.css";
 
 class Buy extends Component {
   constructor(props) {
